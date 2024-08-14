@@ -23,7 +23,7 @@ const User = {
   },
   delete: (id, callback) => {
     const query = 'DELETE FROM user WHERE uid = ?';
-    db.query(query, [uid], (err, results) => {
+    db.query(query, [id], (err, results) => {
       if (err) {
         return callback(err, null);
       }
@@ -33,7 +33,7 @@ const User = {
 
   rename: (id, newName, callback) => {
     const query = 'UPDATE user SET uname = ? WHERE uid = ?';
-    db.query(query, [newName, uid], (err, results) => {
+    db.query(query, [newName, id], (err, results) => {
       if (err) {
         return callback(err, null);
       }
