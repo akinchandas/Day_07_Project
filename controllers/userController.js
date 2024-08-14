@@ -12,8 +12,8 @@ const userController = {
   },
 
   createUser: (req, res) => {
-    const { name, pass } = req.body;
-    User.create({ name, pass }, (err, userId) => {
+    const { uname, upass } = req.body;
+    User.create({ uname, upass }, (err, userId) => {
       if (err) {
         return res.status(500).json({ error: err.message });
       }
@@ -23,8 +23,8 @@ const userController = {
     });
   },
   deleteUser: (req, res) => {
-    const { id } = req.params;
-    User.delete(id, (err) => {
+    const { uid } = req.params;
+    User.delete(uid, (err) => {
       if (err) {
         return res.status(500).json({ error: err.message });
       }
@@ -33,9 +33,9 @@ const userController = {
   },
 
   renameUser: (req, res) => {
-    const { id } = req.params;
+    const { uid } = req.params;
     const { newName } = req.body;
-    User.rename(id, newName, (err) => {
+    User.rename(uid, newName, (err) => {
       if (err) {
         return res.status(500).json({ error: err.message });
       }
