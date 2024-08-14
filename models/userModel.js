@@ -3,7 +3,7 @@ const db = require('../db');
 
 const User = {
   getAll: (callback) => {
-    const query = 'SELECT * FROM info'; // Changed to 'info'
+    const query = 'SELECT * FROM user'; // Changed to 'info'
     db.query(query, (err, results) => {
       if (err) {
         return callback(err, null);
@@ -13,8 +13,8 @@ const User = {
   },
 
   create: (userData, callback) => {
-    const query = 'INSERT INTO info (name, age) VALUES (?, ?)'; // Changed to 'info'
-    db.query(query, [userData.name, userData.age], (err, results) => {
+    const query = 'INSERT INTO user (uname, upass) VALUES (?, ?)'; // Changed to 'info'
+    db.query(query, [userData.name, userData.pass], (err, results) => {
       if (err) {
         return callback(err, null);
       }
@@ -22,8 +22,8 @@ const User = {
     });
   },
   delete: (id, callback) => {
-    const query = 'DELETE FROM info WHERE id = ?';
-    db.query(query, [id], (err, results) => {
+    const query = 'DELETE FROM user WHERE uid = ?';
+    db.query(query, [uid], (err, results) => {
       if (err) {
         return callback(err, null);
       }
@@ -32,8 +32,8 @@ const User = {
   },
 
   rename: (id, newName, callback) => {
-    const query = 'UPDATE info SET name = ? WHERE id = ?';
-    db.query(query, [newName, id], (err, results) => {
+    const query = 'UPDATE user SET uname = ? WHERE uid = ?';
+    db.query(query, [newName, uid], (err, results) => {
       if (err) {
         return callback(err, null);
       }
